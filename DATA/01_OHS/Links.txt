@@ -1,0 +1,11 @@
+LINKS TO DATA:
+
+Podatki v Excelu: 01_ACTIONS_v00.xls
+https://1drv.ms/x/s!Apsk8DnNv2GRhcFclvE91pJdFKq_7g
+https://onedrive.live.com/view.aspx?resid=9161BFCD39F0249B!90332&ithint=file%2cxlsx&app=Excel&authkey=!AJbxPdaSXRSqv-4
+
+Podatki: data.csv
+https://1drv.ms/u/s!Apsk8DnNv2GRhcF0tHs_xW6AkaEd_Q
+https://onedrive.live.com/download?cid=9161BFCD39F0249B&resid=9161BFCD39F0249B%2190346&authkey=AOBAItcR_Brd-XQ
+
+<iframe src="https://onedrive.live.com/embed?cid=9161BFCD39F0249B&resid=9161BFCD39F0249B%2190356&authkey=AEDATonJAOUrwAI" width="98" height="120" frameborder="0" scrolling="no"></iframe>

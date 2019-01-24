@@ -1,0 +1,55 @@
+ 
+
+
+#%% TRASH
+                        
+# IDUre	 ID 	Datum_vnosa	MS	Priimek in ime	Ure_skupaj	Ure_redne	Ure_nadure	Ure_nocne	Aktiven	Opombe 
+#
+#    df3 = df2.groupby(['MS', 'priimek'])[['H_skupaj', 'H_nocne']].agg('sum')
+#    
+#    #d
+#    delovnih_dni_v_mesecu = 15
+#    df3['N_redne_8']= delovnih_dni_v_mesecu * 8
+#    df3['H_Nadure'] = df3.apply(lambda x: max(0,x['H_skupaj']-x['N_redne_8']), axis=1)
+#    df3['H_Redne'] = df3['H_skupaj'] - df3['H_Nadure'] - df3['H_nocne']
+#    df3.drop('N_redne_8', axis=1, inplace=True)
+#    df3.to_csv('Sum_'+ datoteka_izhodna, mode='w', sep=';', header=True, index=True, encoding='cp1250', decimal=',' )
+#
+
+#    df2['H_nadure'] = (df2['H_skupaj']-df2['OsemUr']-df2['H_nocne']+df2['H_korekcija']).apply(lambda x: max(0,x))
+#
+#    #df2['H_nadurePlus'] = df2['H_nadure'].apply(lambda x: max(0,x))
+#    df2['H_redne'] = df2['H_skupaj'] - df2['H_nadure'] - df2['H_nocne']
+#
+##shrani rezultate v csv_datoteko
+#df2.to_csv(datoteka_izhodna, mode='w',  sep=';', header=True, index=False, encoding='cp1250', decimal=",")
+#   
+#df3 = df2.groupby(['MS', 'priimek'])[['H_skupaj','H_redne', 'H_nocne', 'H_nadure']].agg('sum')
+#df3.to_csv('Sum_'+ datoteka_izhodna, mode='w', sep=';', header=True, index=True, encoding='cp1250', decimal=',' )
+#df3.reset_index(level=[0,1], inplace=True)
+#With df.reset_index(level=df.index.names, inplace=True) one can convert a given whole multiindex into columns 
+    
+    
+
+#%% TRASH   or COPYCLIP  
+#
+#>>> import datetime
+#>>> datetime.datetime.today()
+#datetime.datetime(2012, 3, 23, 23, 24, 55, 173504)
+#>>> datetime.datetime.today().weekday()
+
+#>>> import datetime
+#>>> datetime.datetime.today()
+#datetime.datetime(2012, 3, 23, 23, 24, 55, 173504)
+#>>> datetime.datetime.today().weekday()
+
+#I believe date.isocalendar() is going to be the answer. This article explains the math behind ISO 8601 Calendar. Check out the date.isocalendar() portion of the datetime page of the Python documentation.
+#
+#>>> dt = datetime.date(2010, 6, 16) 
+#>>> wk = dt.isocalendar()[1]
+#
+#    
+#    
+#from pywinauto.application import Application
+#app = Application(backend="uia").start("notepad.exe")
+#app.UntitledNotepad.type_keys("%FX")

@@ -1,0 +1,49 @@
+11.12.2018 16:12:15; ErrStep= -1; 
+11.12.2018 21:21:39; transform.py -1; 
+11.12.2018 21:21:39; transform.py ; data_1D.txt 
+11.12.2018 21:38:47; transform.py ; data_1D.txt 
+11.12.2018 21:41:49; transform.py ; data_30D.txt 
+11.12.2018 21:44:52; transform.py ; data_30D.txt 
+11.12.2018 21:46:02; transform.py ; data_1D.txt 
+11.12.2018 22:25:14; transform.py ; data_1D.txt 
+11.12.2018 22:26:14; transform.py ; data_1D.txt 
+12.12.2018 9:05:16; ErrStep= -1; 
+12.12.2018 9:26:02; ErrStep= -1; 
+12.12.2018 09:26:12; transform.py ; data_120D.txt 
+12.12.2018 15:35:36; ErrStep= -1; 
+12.12.2018 15:35:46; transform.py ; data_120D.txt 
+13.12.2018 9:45:55; ErrStep= -1; 
+13.12.2018 09:46:07; transform.py ; data_120D.txt 
+17.12.2018 13:25:07; ErrStep= 4; The control could not be found by id.
+17.12.2018 13:25:16; transform.py ; data_120D.txt 
+17.12.2018 13:27:37; ErrStep= -1; 
+17.12.2018 13:27:41; transform.py ; data_120D.txt 
+21.12.2018 10:16:06; ErrStep= -1; 
+21.12.2018 10:16:16; transform.py ; data_120D.txt 
+31.12.2018 9:38:50; ErrStep= -1; 
+31.12.2018 09:39:04; transform.py ; data_120D.txt 
+1. 01. 2019 18:41:25; ErrStep= 3; 
+3.1.2019 10:53:27; ErrStep= 1; Datoteke ni mogoèe najti
+03.01.2019 10:53:37; transform.py ; data_120D.txt 
+3.1.2019 10:57:47; ErrStep= 1; Datoteke ni mogoèe najti
+03.01.2019 10:57:50; transform.py ; data_120D.txt 
+3.1.2019 11:00:16; ErrStep= 3; 
+03.01.2019 11:00:19; transform.py ; data_120D.txt 
+3.1.2019 11:00:58; ErrStep= 4; The control could not be found by id.
+03.01.2019 11:01:01; transform.py ; data_120D.txt 
+3.1.2019 11:04:01; ErrStep= -1; 
+03.01.2019 11:04:05; transform.py ; data_120D.txt 
+8.1.2019 8:17:19; ErrStep= -1; 
+08.01.2019 08:17:28; transform.py ; data_120D.txt 
+11.1.2019 14:18:15; ErrStep= -1; 
+11.01.2019 14:18:28; transform.py ; data_120D.txt 
+14.1.2019 8:28:10; ErrStep= -1; 
+14.01.2019 08:28:24; transform.py ; data_120D.txt 
+15.1.2019 19:04:08; ErrStep= -1; 
+16.1.2019 8:21:07; ErrStep= -1; 
+16.01.2019 08:21:21; transform.py ; data_120D.txt 
+18.1.2019 8:16:32; ErrStep= -1; 
+18.01.2019 08:16:46; transform.py ; data_120D.txt 
+21. 01. 2019 09:50:10; ErrStep= 4; The method got an invalid argument.
+21. 01. 2019 09:52:05; ErrStep= 4; The control could not be found by id.
+21. 01. 2019 09:53:08; ErrStep= 4; The method got an invalid argument.
