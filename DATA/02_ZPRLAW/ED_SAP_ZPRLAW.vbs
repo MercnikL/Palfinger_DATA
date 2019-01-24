@@ -1,87 +1,136 @@
-'Iz SAP s trasn. ZPRLAW potegni podatke za celo leto in jih shrani
-'Slana 2018-12-11
+sPath = SetPath()
+'Sets path to current directory
 
-ErrCatch() 'SAP procedura ZPRLAW
+StartSAP
+'Start SAP
 
-'Transformiraj v Pythonu
+ErrCatch 
+'SAP procedura ZMATERIAL
+'SAP procedure ZMATERIAL
+
+Python
+'Transforms Data gathered from SAP via Python
+'Transformira podatke pridobljene iz SAP z Pythonom
+
+EndSAP
+'END SAP
+
+Sub Python
+
+Set fso = CreateObject("Scripting.FileSystemObject")
+'Setting path for Python
+'Nastavljanje poti Pythona
+
+path_student = "C:/Users/student5/Anaconda/Python.exe"
+path_home = "D:/OneDrive/Dokumenti/Python"
+path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
+path_daniela = "C:/Users/bedernjakd/Documents"
+
+If (fso.FileExists(path_home)) Then
+	pathPython = path_home
+
+ElseIf (fso.FileExists(path_work)) Then
+	pathPython = path_work
+	
+ElseIf (fso.FileExists(path_daniela)) Then
+	pathPython = path_daniela
+
+ElseIf (fso.FileExists(path_student)) Then
+	pathPython = path_student
+
+Else
+    WScript.Echo "Could not find path"
+End If
+
+'Runs cmd line
 Set winShell = CreateObject("WScript.Shell")
 WaitOnReturn = False
 windowStyle = 1
-'Run the desired pair of shell commands in command prompt.
-command1 = "C:\Users\slanad\AppData\Local\Continuum\anaconda3\python Transform.py data_120D.txt data_120D.csv" 
+
+'Define the command to run the python file and exit when done
+command1 = pathPython & " TransformZPRLAW.py" 
 command2 = "exit"
+
+'Run the commands
 Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
 
+End Sub
+
+Function SetPath()
+
+	'Pot vzame iz starša datoteke, kjer se skripta nahaja. Doda še \ za lazje zdruzevanje
+	'Path is taken from parent of the file, where script is located. Adds a \ for easier combining
+	SetPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName) & "\"
+
+End Function
 
 
-Sub ErrCatch()
+Sub ErrCatch() 'If Error occurs, save the log about it
+
 	dim Res, CurrentStep, sLog
-	LogFile = "ED_log.txt"
+	LogFile = "ED_log.txt" 'Log file
+	
 	on error resume next
 	Res = UnSafeCode(CurrentStep)
-
-	sLog = cstr(now()) & "; ErrStep= " & CurrentStep & "; " & Err.Description
 	
+	'Creates a string containing on which error step did Error occur and provides a description of the error
+	sLog = cstr(now()) & "; ErrStep= " & CurrentStep & "; " & Err.Description 
+
 	Set fs = CreateObject("Scripting.FileSystemObject")
 	'Set f = fs.CreateTextFile(LogFile, True)
 	Set f = fs.OpenTextFile(LogFile, 8, True, 0) '8=append
-
-	f.WriteLine(sLog)
+	
+	f.WriteLine(sLog) 'Write in the file
 
 	f.Close
-	Set f = Nothing
-	Set fs = Nothing
+	Set f = Nothing 'Clearing memory
+	Set fs = Nothing 'Clearing memory
 
 end sub
 
 
 Function UnSafeCode(ErrStep)
+
 ErrStep = 1
-'Start SAP
-Set winShell = CreateObject("WScript.Shell")
-WaitOnReturn = False
-windowStyle = 1
+'Oppening SAPGUI
 
-    'Preberi geslo iz Credentials.txt
-    Dim f, sUser, sPass
-    Set f = CreateObject("Scripting.FileSystemObject").OpenTextFile("..\SAP_Credentials.txt", 1) '1 je za read
-    sUser = f.ReadLine
-    sPass = f.ReadLine
-    Set f = Nothing
+	If Not IsObject(Ap) Then
+		Set SapGuiAuto = GetObject("SAPGUI")
+		Set Ap = SapGuiAuto.GetScriptingEngine
+	End If
+		If Not IsObject(Connection) Then
+			Set Connection = Ap.Children(0)
+		End If
+		If Not IsObject(session) Then
+		   Set session = Connection.Children(0)
+		End If
+		If IsObject(WScript) Then
+		   WScript.ConnectObject session, "on"
+		   WScript.ConnectObject Ap, "on"
+		End If
 
-    'Run the desired pair of shell commands in command prompt.
-    command1 = "start sapshcut -sysname=PD1 -client=400 -user=" & sUser & " -pw=" & sPass &" "
-    command2 = "exit "
-    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
 
 ErrStep = 2
-'Pocakaj 7 sekund da se SAP nalozi, ker v prejsnjem stavku WaitOnReturn ne dela vedno
-    dteWait = DateAdd("s", 7, Now())
-    Do Until (Now() > dteWait)
-    Loop
 
+'Data location
 'Lokacije datotek
-sPath = "C:\Users\slanad\OneDrive\Dokumenti\Palfinger\DATA\02_ZPRLAW\"
-'sFile1 = "data_1D.txt"
+
+
+sPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName) & "\"
+'sFile1 = "data_1D.txt" <-- test file
 sFile2 = "data_120D.txt"
 
-ErrStep = 3
-'SAP ukazi
-    If Not IsObject(Ap) Then
-       Set SapGuiAuto = GetObject("SAPGUI")
-       Set Ap = SapGuiAuto.GetScriptingEngine
-    End If
-    If Not IsObject(Connection) Then
-       Set Connection = Ap.Children(0)
-    End If
-    If Not IsObject(session) Then
-       Set session = Connection.Children(0)
-    End If
-    If IsObject(WScript) Then
-       WScript.ConnectObject session, "on"
-       WScript.ConnectObject Ap, "on"
-    End If
- 
+'There were errors with pure Date function so the function is transformed
+'Variables contain the current date, yesterday's date, and date for one month back
+
+'Dim today, yesterday, monthBack 'Creating variables
+yesterday = DateAdd("d","-1",Date) 'Transforming current date to yesterday
+yesterday = Day(yesterday) & "." & Month(yesterday) & "." & Year(yesterday)' Formatting date
+	
+back127 = DateAdd("d","-127",Date) 'Transforming current date to 127 days back
+back127 = Day(back127) & "." & Month(back127) & "." & Year(back127)' Formatting date
+
+
 ''izvozi podatke za 1 dan
 '   session.FindById("wnd[0]").Maximize
 '   session.FindById("wnd[0]/tbar[0]/okcd").Text = "zprlaw"
@@ -102,13 +151,14 @@ ErrStep = 3
 '    session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
 '    session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
 
-ErrStep = 4
+ErrStep = 3
 'izvozi podatke za zadnjih 120 dni
+	Session.findById("wnd[0]").maximize
     session.FindById("wnd[0]/tbar[0]/okcd").Text = "zprlaw"
     session.FindById("wnd[0]").SendVKey 0 'ENTER
     session.FindById("wnd[0]/usr/ctxtP_WERKS-LOW").Text = "5101"
-    session.FindById("wnd[0]/usr/ctxtP_BUDAT-LOW").Text = CStr(Date - 127)   'danes - 127 dni "10.12.2018"	
-	session.findById("wnd[0]/usr/ctxtP_BUDAT-HIGH").text = CStr(Date - 1)	'danes - 1 dan
+    session.FindById("wnd[0]/usr/ctxtP_BUDAT-LOW").Text = back127   'danes - 127 dni "10.12.2018"	
+	session.findById("wnd[0]/usr/ctxtP_BUDAT-HIGH").text = yesterday	'danes - 1 dan
     session.FindById("wnd[0]").SendVKey 8 'F8
     session.FindById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").PressToolbarContextButton "&MB_EXPORT" 'Export
     session.FindById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").SelectContextMenuItem "&PC"
@@ -122,19 +172,63 @@ ErrStep = 4
     session.FindById("wnd[1]").SendVKey 11
     session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
     session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
-	
-ErrStep = 5	
-'END SAP
-    command1 = "taskkill /F /IM saplogon.exe "
-    command2 = "exit "
-    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
-        
-    'Release pointer to the command prompt.
-    Set winShell = Nothing
 
 ErrStep = -1
+	'If everything is OK
+	'Če vse dela
+
 
 End Function
+	
+Private Sub StartSAP() 'Start SAP Session and login
+'Start SAP
+	
+	'Kreiramo cmd objekt
+	'Creating a cmd object
+	Set winShell = CreateObject("WScript.Shell") 
+	WaitOnReturn = False
+	windowStyle = 1
 
+    'Preberi ime in geslo iz SAP_Credentials.txt
+	'Read username and password from SAP_Credentials.txt
+    Dim f, sUser, sPass
+    Set f = CreateObject("Scripting.FileSystemObject").OpenTextFile("..\SAP_Credentials.txt", 1) '1 je za read / 1 means read
+    sUser = f.ReadLine
+    sPass = f.ReadLine
+    Set f = Nothing
 
+    command1 = "start sapshcut -sysname=PD1 -client=400 -user=" & sUser & " -pw=" & sPass &" " 'Defining command to log-in into SAP
+    command2 = "exit " 'Defining command to exit cmd
+	
+	'Zaženi zaželjene ukaze v cmd 
+    'Run the desired pair of shell commands in command prompt.
+    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+	
+	'Pocakaj 7 sekund da se SAP nalozi, ker v prejsnjem stavku WaitOnReturn ne dela vedno
+	'Wait 7 seconds for SAP to load, because WaitOnReturn does not work everytime
+    dteWait = DateAdd("s", 7, Now())
+    Do Until (Now() > dteWait)
+    Loop
+	
+End Sub
 
+Private Sub EndSAP() 'Kills SAP Session
+
+	'Kreiramo cmd objekt
+	 'Creating a cmd object
+	Set winShell = CreateObject("WScript.Shell")
+	WaitOnReturn = False
+	windowStyle = 1
+	
+    command1 = "taskkill /F /IM saplogon.exe " 'Defining command to kill the program
+    command2 = "exit " 'Defining command to exit cmd
+	
+	'Zaženi ukaze v cmd
+	'Running the commands in cmd
+    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+	
+	'Sprosti kazalec
+	'Release pointer to the command prompt.
+    Set winShell = Nothing 
+	
+End Sub

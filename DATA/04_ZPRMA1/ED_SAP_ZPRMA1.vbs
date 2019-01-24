@@ -11,7 +11,6 @@ ErrCatch
 'EndSAP
 'END SAP
 
-
 Function SetPath()
 
 	'Pot vzame iz starša datoteke, kjer se skripta nahaja. Doda še \ za lazje zdruzevanje
@@ -55,7 +54,7 @@ ErrStep = 1
 		Set Ap = SapGuiAuto.GetScriptingEngine
 	End If
 		If Not IsObject(Connection) Then
-		   Set Connection = Ap.Children(0)
+			Set Connection = Ap.Children(0)
 		End If
 		If Not IsObject(session) Then
 		   Set session = Connection.Children(0)

@@ -2,7 +2,19 @@
 'and save into data.csv
 'SLD 2018-12-02
 
+'Saves path of current directory
+'Shrani pot trenutne mape
+sPath = SetPath()
+
 ErrCatch()
+
+Function SetPath()
+
+	'Pot vzame iz starša datoteke, kjer se skripta nahaja. Doda še \ za lazje zdruzevanje
+	'Path is taken from parent of the file, where script is located. Adds a \ for easier combining
+	SetPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName) & "\"
+
+End Function
 
 Sub ErrCatch()
 	dim Res, CurrentStep, sLog
@@ -29,7 +41,7 @@ Function UnSafeCode(ErrStep)
 ErrStep = 1
     Set fs = CreateObject("Scripting.FileSystemObject")
     todaysdate = Now()
-    OutputFile = "C:\Users\slanad\OneDrive\Dokumenti\Palfinger\DATA\01_OHS\data.csv"
+    OutputFile = sPath & "data.csv"
     sLocilo = "; "
     sString = Chr(39)
 

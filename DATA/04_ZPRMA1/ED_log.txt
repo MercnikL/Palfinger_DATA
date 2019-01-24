@@ -45,3 +45,8 @@
 24. 01. 2019 12:57:15; ErrStep= 2; Neujemanje tipov
 24. 01. 2019 12:57:49; ErrStep= 3; The control could not be found by id.
 24. 01. 2019 12:59:33; ErrStep= -1; 
+24. 01. 2019 13:16:48; ErrStep= -1; 
+24. 01. 2019 13:42:47; ErrStep= -1; 
+24. 01. 2019 13:48:03; ErrStep= -1; 
+24. 01. 2019 13:52:34; ErrStep= 3; 
+24. 01. 2019 14:25:17; ErrStep= -1; 

@@ -47,3 +47,42 @@
 21. 01. 2019 09:50:10; ErrStep= 4; The method got an invalid argument.
 21. 01. 2019 09:52:05; ErrStep= 4; The control could not be found by id.
 21. 01. 2019 09:53:08; ErrStep= 4; The method got an invalid argument.
+24. 01. 2019 13:16:31; ErrStep= 4; 
+24. 01. 2019 13:19:32; ErrStep= 2; Neujemanje tipov
+24. 01. 2019 13:19:42; ErrStep= 2; Neujemanje tipov
+24. 01. 2019 13:20:30; ErrStep= 2; Neujemanje tipov
+24. 01. 2019 13:21:57; ErrStep= 2; Neujemanje tipov
+24. 01. 2019 13:23:59; ErrStep= -1; 
+24. 01. 2019 13:31:39; ErrStep= 1; 
+24. 01. 2019 13:32:42; ErrStep= 1; 
+24. 01. 2019 13:34:26; ErrStep= 1; 
+24. 01. 2019 13:37:25; ErrStep= 1; 
+24. 01. 2019 13:40:41; ErrStep= 1; 
+24. 01. 2019 13:43:02; ErrStep= 1; The enumerator of the collection cannot find en element with the specified index.
+24. 01. 2019 13:43:25; ErrStep= 1; 
+24. 01. 2019 13:44:49; ErrStep= 1; 
+24. 01. 2019 13:45:30; ErrStep= 1; 
+24. 01. 2019 13:45:37; ErrStep= 1; 
+24. 01. 2019 13:45:58; ErrStep= 1; 
+24. 01. 2019 13:46:04; ErrStep= 1; 
+24. 01. 2019 13:52:35; ErrStep= 1; 
+24. 01. 2019 13:52:43; ErrStep= 1; 
+24. 01. 2019 13:54:14; ErrStep= 1; 
+24. 01. 2019 13:58:14; ErrStep= -1; 
+24. 01. 2019 14:00:19; ErrStep= -1; 
+24. 01. 2019 14:03:55; ErrStep= -1; 
+24. 01. 2019 14:05:23; ErrStep= 3; 
+24. 01. 2019 14:06:56; ErrStep= -1; 
+24. 01. 2019 14:12:40; ErrStep= -1; 
+24. 01. 2019 14:16:14; ErrStep= -1; 
+24. 01. 2019 14:19:17; ErrStep= -1; 
+24.01.2019 14:21:23; transform.py ; data_120D.txt 
+24.01.2019 14:21:32; transform.py ; data_120D.txt 
+24. 01. 2019 14:30:41; ErrStep= -1; 
+24.01.2019 14:31:18; transform.py ; data_120D.txt 
+24. 01. 2019 14:33:43; ErrStep= -1; 
+24.01.2019 14:33:54; transform.py ; data_120D.txt 
+24. 01. 2019 14:39:32; ErrStep= -1; 
+24.01.2019 14:39:34; transform.py ; data_120D.txt 
+24. 01. 2019 14:45:20; ErrStep= -1; 
+24.01.2019 14:45:22; transform.py ; data_120D.txt 

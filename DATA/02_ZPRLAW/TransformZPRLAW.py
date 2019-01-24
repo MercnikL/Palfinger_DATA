@@ -15,15 +15,25 @@ import pandas as pd
 # %% SET_PATH
 def f_setPath(folder):
     "Set or create working folder"
-    import os
-
-    path_home = "D:/OneDrive/Dokumenti/Palfinger/DATA"
-    path_work = "C:/Users/slanad/OneDrive/Dokumenti/Palfinger/DATA"
+    
+    path_home = "D:/OneDrive/Dokumenti/Python"
+    path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
+    path_daniela = "C:/Users/bedernjakd/Documents"
+    #path_student = "//ssimarfile01/CC/CF_WERK/TMP/Studenti/2018_Leon/DATA"
+    path_studentDesktop = "C:/Users/student5/Desktop/Palfinger_DATA/DATA"
+    
 
     if os.path.exists(path_home):
         path = path_home
     elif os.path.exists(path_work):
         path = path_work
+    elif os.path.exists(path_daniela):
+        path = path_daniela
+    elif os.path.exists(path_studentDesktop):
+        path = path_studentDesktop
+    #elif os.path.exists(path_student):
+    #    path = path_student
+
     else:
         # print("NO CORRECT PATH")
         return("No path found")
@@ -34,7 +44,6 @@ def f_setPath(folder):
 
     del((folder, path_home, path_work, path))
     return(os.getcwd())
-
 # %% Transform
 
 f_setPath("02_ZPRLAW") #Set working folder
@@ -44,8 +53,8 @@ try:
     sFile1 = sys.argv[1]
     sFileOut1 = sys.argv[2]
 except:
-    sFile1 = "data_1D.txt"
-    sFileOut1 ="data_1D.csv"
+    sFile1 = "data_120D.txt"
+    sFileOut1 ="data_120D.csv"
     
 sLogFile = "ED_log.txt"
 

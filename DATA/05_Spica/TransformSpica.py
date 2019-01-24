@@ -25,7 +25,7 @@ def f_setPath(folder):
     path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
     path_daniela = "C:/Users/bedernjakd/Documents"
     #path_student = "//ssimarfile01/CC/CF_WERK/TMP/Studenti/2018_Leon/DATA"
-    path_studentDesktop = "C:/Users/student5/Desktop/DATA"
+    path_studentDesktop = "C:/Users/student5/Desktop/Palfinger_DATA/DATA"
     
 
     if os.path.exists(path_home):
