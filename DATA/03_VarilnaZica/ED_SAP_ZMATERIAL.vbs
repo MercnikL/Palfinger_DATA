@@ -4,12 +4,18 @@
 
 'Slana 2018-12-11
 
-
 sPath = SetPath()
 'Sets path to current directory
 
+pPath = PythonPath()
+'Sets the path for python.exe
+
 StartSAP
 'Start SAP
+
+MultipleLogins
+'Check Multiple logins pop-up window
+'Preveri okno, ki se prikaže ob veèkratni prijavi
 
 ErrCatch 
 'SAP procedura ZMATERIAL
@@ -19,17 +25,8 @@ Macro_MD04_VarilnaZica
 'SAP procedura MD04
 'SAP procedure MD04
 
-EndSAP
+'EndSAP
 'END SAP
-
-
-Function SetPath()
-
-	'Pot vzame iz starša datoteke, kjer se skripta nahaja. Doda še \ za lazje zdruzevanje
-	'Path is taken from parent of the file, where script is located. Adds a \ for easier combining
-	SetPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName) & "\"
-
-End Function
 
 Sub ErrCatch() 'If Error occurs, save the log about it
 
@@ -324,5 +321,64 @@ windowStyle = 1
 	
     Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
 	
+	dteWait = DateAdd("s", 7, Now())
+    Do Until (Now() > dteWait)
+    Loop
 	
 End Sub
+
+
+Function PythonPath()
+
+	Set fso = CreateObject("Scripting.FileSystemObject")
+	'Setting path for Python
+	'Nastavljanje poti Pythona
+
+	path_student = "C:/Users/student5/Anaconda/Python.exe"
+	path_home = "D:/OneDrive/Dokumenti/Python"
+	path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
+	path_daniela = "C:/Users/bedernjakd/Documents"
+
+	If (fso.FileExists(path_home)) Then
+		PythonPath = path_home
+
+	ElseIf (fso.FileExists(path_work)) Then
+		PythonPath = path_work
+		
+	ElseIf (fso.FileExists(path_daniela)) Then
+		PythonPath = path_daniela
+
+	ElseIf (fso.FileExists(path_student)) Then
+		PythonPath = path_student
+		WScript.Echo "Path found"
+
+	Else
+		WScript.Echo "Could not find path"
+	End If
+
+End Function
+
+Sub MultipleLogins
+
+'Runs cmd line
+Set winShell = CreateObject("WScript.Shell")
+WaitOnReturn = False
+windowStyle = 1
+
+'Define the command to run the python file and exit when done
+command1 = pPath & " autoClose.py" 
+
+command2 = "exit"
+
+'Run the commands
+Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+
+End Sub
+
+Function SetPath()
+
+	'Pot vzame iz starša datoteke, kjer se skripta nahaja. Doda še \ za lazje zdruzevanje
+	'Path is taken from parent of the file, where script is located. Adds a \ for easier combining
+	SetPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName) & "\"
+
+End Function

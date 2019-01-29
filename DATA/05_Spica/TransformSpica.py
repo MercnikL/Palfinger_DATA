@@ -389,8 +389,8 @@ def f_Pretvori_v_dataframe(datoteka_vhodna):
         prisotnost = row[8]
         plan = row[9]
         
-        B_R = ("olni", "efundacija")
-        D_C = ("opust", "elodnevno")
+        bolni = ("BOLNI", "REFUNDACIJA")
+        dopust = ("DOPUST", "REFUDNACIJA")
         
         if urnik == 'Korekcija poizmenske mej': 
             korekcija = dan #v dan je vrednost korekcije npr. "+2:00"
@@ -421,10 +421,10 @@ def f_Pretvori_v_dataframe(datoteka_vhodna):
                 if nPrihod > 1: #korekcijo premaknem k zadnjemu zapisu v enem dnevu
                     df2['korekcija'].iloc[-1] = df2['korekcija'].iloc[-2]
                     df2['korekcija'].iloc[-2] = ''
-            elif any(s in str(urnik) for s in B_R) and ("->" not in str(urnik)):
+            elif any(s in (str(urnik)).upper() for s in bolni) and ("->" not in str(urnik)):
                 dfA.loc[0] = [sDatum, MS, priimek, "0:00", "0:00", sErr, "0", sTipUrnika, sPrisotnost, sPlan, sPrisotnost, "0:00", "0:00" ]
                 df2 = df2.append(dfA, ignore_index=True)   
-            elif any(s in str(urnik) for s in D_C) and ("->" not in str(urnik)):
+            elif any(s in (str(urnik)).upper() for s in dopust) and ("->" not in str(urnik)):
                 dfA.loc[0] = [sDatum, MS, priimek, "0:00", "0:00", sErr, "0", sTipUrnika, sPrisotnost, sPlan, "0:00", sPrisotnost, "0:00" ]
                 df2 = df2.append(dfA, ignore_index=True)
                     
@@ -452,12 +452,10 @@ def main():
         #arguments from cmd line
             datoteka_vhodna = sys.argv[1]
             datoteka_izhodna = sys.argv[2]
-            datoteka_izhodnaTest = sys.argv[3]
 
         except:
             datoteka_vhodna = './Spica_I.TXT'
             datoteka_izhodna = './results/data_Spica_dogodki.csv'
-            datoteka_izhodnaTest = './data_Spica_dogodkiTest.csv'
 
         datoteka_tmp1 = './results/output_report.txt'  
         datoteka_uporabniki = "./01_Zaposleni_Kadrovska_ver02.xlsx"
