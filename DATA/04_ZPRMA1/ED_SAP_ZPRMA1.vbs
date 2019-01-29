@@ -1,23 +1,73 @@
 sPath = SetPath()
 'Sets path to current directory
 
-StartSAP
-'Start SAP
+pPath = PythonPath()
+'Sets the path for python.exe
 
-ErrCatch 
-'SAP procedura ZMATERIAL
-'SAP procedure ZMATERIAL
+StartSAP	'Start SAP
 
-'EndSAP
-'END SAP
+MultipleLogins
+'Check Multiple logins pop-up window
+'Preveri okno, ki se prikaûe ob veËkratni prijavi
+
+ErrCatch	'Izvede ZPRMA1
+
+EndSAP		'END SAP 
+
+
 
 Function SetPath()
 
-	'Pot vzame iz star≈°a datoteke, kjer se skripta nahaja. Doda ≈°e \ za lazje zdruzevanje
+	'Pot vzame iz staröa datoteke, kjer se skripta nahaja. Doda öe \ za lazje zdruzevanje
 	'Path is taken from parent of the file, where script is located. Adds a \ for easier combining
 	SetPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName) & "\"
 
 End Function
+
+Function PythonPath()
+
+	Set fso = CreateObject("Scripting.FileSystemObject")
+	'Setting path for Python
+	'Nastavljanje poti Pythona
+
+	path_student = "C:/Users/student5/Anaconda/Python.exe"
+	path_home = "D:/OneDrive/Dokumenti/Python"
+	path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
+	path_daniela = "C:/Users/bedernjakd/Documents"
+
+	If (fso.FileExists(path_home)) Then
+		PythonPath = path_home
+
+	ElseIf (fso.FileExists(path_work)) Then
+		PythonPath = path_work
+		
+	ElseIf (fso.FileExists(path_daniela)) Then
+		PythonPath = path_daniela
+
+	ElseIf (fso.FileExists(path_student)) Then
+		PythonPath = path_student
+
+	Else
+		WScript.Echo "Could not find path"
+	End If
+
+End Function
+
+Sub MultipleLogins
+
+'Runs cmd line
+Set winShell = CreateObject("WScript.Shell")
+WaitOnReturn = False
+windowStyle = 1
+
+'Define the command to run the python file and exit when done
+command1 = pPath & " autoClose.py" 
+command2 = "exit"
+
+'Run the commands
+Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+
+End Sub
 
 
 Sub ErrCatch() 'If Error occurs, save the log about it
@@ -47,14 +97,14 @@ end sub
 Function UnSafeCode(ErrStep)
 
 ErrStep = 1
-'Oppening SAPGUI
+'Opening SAPGUI
 
 	If Not IsObject(Ap) Then
 		Set SapGuiAuto = GetObject("SAPGUI")
 		Set Ap = SapGuiAuto.GetScriptingEngine
 	End If
 		If Not IsObject(Connection) Then
-			Set Connection = Ap.Children(0)
+		   Set Connection = Ap.Children(0)
 		End If
 		If Not IsObject(session) Then
 		   Set session = Connection.Children(0)
@@ -67,59 +117,46 @@ ErrStep = 1
 ErrStep = 2
 'There were errors with pure Date function so the function is transformed
 'Variables contain the current date, yesterday's date, and date for one month back
-
-	'Dim today, yesterday, monthBack 'Creating variables
 	
-	today = Day(Date) & "." & Month(Date) & "." & Year(Date)  'Formatting today's date
+	Dim today, yesterday, monthBack 'Creating variables
+	
+	today = Day(Date) & "." & Month(Date) & "." & Year(Date) 'Formatting today's date
 	
 	yesterday = DateAdd("d","-1",Date) 'Transforming current date to yesterday
 	yesterday =  Day(yesterday) & "." & Month(yesterday) & "." & Year(yesterday)' Formatting date
 	
-	'monthBack = DateAdd("m","-1",Date)'Transforming current date to a month back
-	'monthBack = Day(monthBack) & "." & Month(monthBack) & "." & Year(monthBack) ' Formatting date
-	
-	'today = Format(now(),"dd.mm.yyyy")
-	'today = FormatDateTime(Date, "dd.mm.yyyy")
-	
-	'yesterday = DateAdd("d","-1",Date) 'Transforming current date to yesterday
-	
-	'yesterday = Format(now(), "dd.mm.yyyy")
-	'yesterday = FormatDateTime(yesterday, "dd.mm.yyyy")
+	monthBack = DateAdd("m","-1",Date)'Transforming current date to a month back
+	monthBack = Day(monthBack) & "." & Month(monthBack) & "." & Year(monthBack) ' Formatting date
+
 	
 ErrStep = 3
 
 'SAP Commands
 
-exportFileName = "test_data.txt"
+exportFileName = "data_ZPRMA1.txt"
 
-    Session.findById("wnd[0]").maximize
-    Session.findById("wnd[0]/tbar[0]/okcd").Text = "/nZPRMA1"
-    Session.findById("wnd[0]").sendVKey 0
-    Session.findById("wnd[0]/usr/chkP_PERJN").Selected = False  'izkljucim samo za tiste z maticno
-    Session.findById("wnd[0]/usr/ctxtP_WERKS-LOW").Text = "5101"
-    Session.findById("wnd[0]/usr/txtP_ARBPL-LOW").Text = ""
-    Session.findById("wnd[0]/usr/ctxtP_PLANR-LOW").Text = "M30"
-    Session.findById("wnd[0]/usr/ctxtP_PLANR-HIGH").Text = "M98"
-    Session.findById("wnd[0]/usr/ctxtP_BUDAT-LOW").Text = yesterday   'datum od
-    Session.findById("wnd[0]/usr/ctxtP_BUDAT-HIGH").Text = today   'datum do
-    Session.findById("wnd[0]/usr/chkP_PERJN").SetFocus
-    Session.findById("wnd[0]").sendVKey 8 'F8
-    
-'Tukaj shranis:
-    Session.findById("wnd[0]/shellcont/shell").pressToolbarContextButton "&MB_EXPORT"
-    Session.findById("wnd[0]/shellcont/shell").selectContextMenuItem "&PC"
-    Session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select
-    Session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus
-    Session.findById("wnd[1]").sendVKey 0
-    Session.findById("wnd[1]/usr/ctxtDY_PATH").Text = sPath 'lokacija
-    Session.findById("wnd[1]/usr/ctxtDY_FILENAME").Text = exportFileName 'ime datoteke
-    Session.findById("wnd[1]/usr/ctxtDY_FILENAME").caretPosition = 8
-    Session.findById("wnd[1]/tbar[0]/btn[11]").press
-    Session.findById("wnd[0]").sendVKey 12  'F12 - * zakljuci transakcijo
+	session.findById("wnd[0]").maximize
+	session.findById("wnd[0]/tbar[0]/okcd").text = "/nZPRMA1" 'Transaction date
+	session.findById("wnd[0]").sendVKey 0
+	session.findById("wnd[0]/usr/radP_FILE").select
+	session.findById("wnd[0]/usr/ctxtP_WERKS-LOW").text = "5101"
+	session.findById("wnd[0]/usr/ctxtP_BUDAT-LOW").text = yesterday 'From which date
+	session.findById("wnd[0]/usr/ctxtP_BUDAT-HIGH").text = today 'To which date
+	session.findById("wnd[0]/usr/chkP_PERJN").selected = false
+	session.findById("wnd[0]/usr/radP_FILE").setFocus
+	session.findById("wnd[0]/tbar[1]/btn[8]").press
+	session.findById("wnd[1]").sendVKey 4
+	session.findById("wnd[2]/usr/ctxtDY_PATH").text = sPath 'Sets path according to the location of this file
+	session.findById("wnd[2]/usr/ctxtDY_FILENAME").text = exportFileName 'File name
+	session.findById("wnd[2]/usr/ctxtDY_FILENAME").caretPosition = 9
+	session.findById("wnd[2]/tbar[0]/btn[11]").press
+	session.findById("wnd[1]/tbar[0]/btn[0]").press
+	session.findById("wnd[1]/tbar[0]/btn[0]").press
+	
 	
 ErrStep = -1
 	'If everything is OK
-	'ƒåe vse dela
+	'»e vse dela
 
 End Function
 	
@@ -143,7 +180,7 @@ Private Sub StartSAP() 'Start SAP Session and login
     command1 = "start sapshcut -sysname=PD1 -client=400 -user=" & sUser & " -pw=" & sPass &" " 'Defining command to log-in into SAP
     command2 = "exit " 'Defining command to exit cmd
 	
-	'Za≈æeni za≈æeljene ukaze v cmd 
+	'Zaûeni zaûeljene ukaze v cmd 
     'Run the desired pair of shell commands in command prompt.
     Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
 	
@@ -166,7 +203,7 @@ Private Sub EndSAP() 'Kills SAP Session
     command1 = "taskkill /F /IM saplogon.exe " 'Defining command to kill the program
     command2 = "exit " 'Defining command to exit cmd
 	
-	'Za≈æeni ukaze v cmd
+	'Zaûeni ukaze v cmd
 	'Running the commands in cmd
     Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
 	

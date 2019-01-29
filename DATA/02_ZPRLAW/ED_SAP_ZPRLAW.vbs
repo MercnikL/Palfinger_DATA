@@ -1,46 +1,57 @@
 sPath = SetPath()
 'Sets path to current directory
 
+pPath = PythonPath()
+'Sets the path for python.exe
+
 StartSAP
 'Start SAP
+
+MultipleLogins
+'Check Multiple logins pop-up window
+'Preveri okno, ki se prikaže ob večkratni prijavi
 
 ErrCatch 
 'SAP procedura ZMATERIAL
 'SAP procedure ZMATERIAL
 
-Python
+TransformPython
 'Transforms Data gathered from SAP via Python
 'Transformira podatke pridobljene iz SAP z Pythonom
 
 EndSAP
 'END SAP
 
-Sub Python
+Function PythonPath()
 
-Set fso = CreateObject("Scripting.FileSystemObject")
-'Setting path for Python
-'Nastavljanje poti Pythona
+	Set fso = CreateObject("Scripting.FileSystemObject")
+	'Setting path for Python
+	'Nastavljanje poti Pythona
 
-path_student = "C:/Users/student5/Anaconda/Python.exe"
-path_home = "D:/OneDrive/Dokumenti/Python"
-path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
-path_daniela = "C:/Users/bedernjakd/Documents"
+	path_student = "C:/Users/student5/Anaconda/Python.exe"
+	path_home = "D:/OneDrive/Dokumenti/Python"
+	path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
+	path_daniela = "C:/Users/bedernjakd/Documents"
 
-If (fso.FileExists(path_home)) Then
-	pathPython = path_home
+	If (fso.FileExists(path_home)) Then
+		PythonPath = path_home
 
-ElseIf (fso.FileExists(path_work)) Then
-	pathPython = path_work
-	
-ElseIf (fso.FileExists(path_daniela)) Then
-	pathPython = path_daniela
+	ElseIf (fso.FileExists(path_work)) Then
+		PythonPath = path_work
+		
+	ElseIf (fso.FileExists(path_daniela)) Then
+		PythonPath = path_daniela
 
-ElseIf (fso.FileExists(path_student)) Then
-	pathPython = path_student
+	ElseIf (fso.FileExists(path_student)) Then
+		PythonPath = path_student
 
-Else
-    WScript.Echo "Could not find path"
-End If
+	Else
+		WScript.Echo "Could not find path"
+	End If
+
+End Function
+
+Sub MultipleLogins
 
 'Runs cmd line
 Set winShell = CreateObject("WScript.Shell")
@@ -48,7 +59,24 @@ WaitOnReturn = False
 windowStyle = 1
 
 'Define the command to run the python file and exit when done
-command1 = pathPython & " TransformZPRLAW.py" 
+command1 = pPath & " autoClose.py" 
+command2 = "exit"
+
+'Run the commands
+Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+
+End Sub
+
+
+Sub TransformPython
+
+'Runs cmd line
+Set winShell = CreateObject("WScript.Shell")
+WaitOnReturn = False
+windowStyle = 1
+
+'Define the command to run the python file and exit when done
+command1 = pPath & " TransformZPRLAW.py" 
 command2 = "exit"
 
 'Run the commands

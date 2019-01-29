@@ -86,3 +86,16 @@
 24.01.2019 14:39:34; transform.py ; data_120D.txt 
 24. 01. 2019 14:45:20; ErrStep= -1; 
 24.01.2019 14:45:22; transform.py ; data_120D.txt 
+28. 01. 2019 14:45:13; ErrStep= -1; 
+28.01.2019 14:45:16; transform.py ; data_120D.txt 
+28. 01. 2019 14:53:05; ErrStep= 1; 
+28. 01. 2019 14:54:24; ErrStep= -1; 
+28. 01. 2019 14:57:00; ErrStep= -1; 
+29. 01. 2019 07:50:00; ErrStep= 3; 
+29. 01. 2019 07:51:36; ErrStep= -1; 
+29. 01. 2019 07:54:36; ErrStep= -1; 
+29.01.2019 07:54:40; transform.py ; data_120D.txt 
+29. 01. 2019 07:58:51; ErrStep= -1; 
+29.01.2019 07:58:54; transform.py ; data_120D.txt 
+29. 01. 2019 08:00:44; ErrStep= -1; 
+29.01.2019 08:00:47; transform.py ; data_120D.txt 
