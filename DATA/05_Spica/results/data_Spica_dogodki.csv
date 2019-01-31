@@ -5,7 +5,6 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 10.1.2019;8042;51,0;GG;P;Palfinger;Kljuèavnièar-varilec;12,0;8,0;0,0;4,0;0,0;0,0;4,0;0,0;1
 10.1.2019;8043;41,0;BF;P;Palfinger;CNC operater II;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
 10.1.2019;8046;55,0;GG;P;Palfinger;Varilec na robotu;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
-10.1.2019;8049;41,0;BF;P;Palfinger;CNC operater II;0,0;0,0;0,0;0,0;0,0;0,0;0,0;-8,0;1
 10.1.2019;8053;93,0;MGK;P;Palfinger;Montažer II;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 10.1.2019;8072;55,0;GG;P;Palfinger;Varilec na robotu;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 10.1.2019;8095;41,0;BF;P;Palfinger;Kljuèavnièar PO;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
@@ -267,7 +266,6 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 10.1.2019;9569;30,0;LAK;P;Palfinger;Lièar II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 10.1.2019;9571;67,0;EPS;P;Palfinger;Varilec na robotu;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 10.1.2019;9572;76,0;GTC;P;Palfinger;CNC operater I;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
-10.1.2019;9573;92,0;MGK;P;Palfinger;Montažer;0,0;0,0;0,0;0,0;0,0;0,0;0,0;-8,0;1
 10.1.2019;9578;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec;8,0;0,0;0,0;0,0;0,0;8,0;0,0;0,0;1
 10.1.2019;9581;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec;8,0;0,0;0,0;0,0;0,0;8,0;0,0;0,0;1
 10.1.2019;9583;85,0;GTC;P;Palfinger;Kljuèavnièar-varilec;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
@@ -629,7 +627,6 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 11.1.2019;8235;66,0;KS;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;0,0;0,0;8,0;0,0;0,0;0,0;1
 11.1.2019;8236;95,0;MGK;P;Palfinger;Montažer II;6,0;0,0;6,0;0,0;0,0;0,0;0,0;-2,0;1
 11.1.2019;8237;40,0;BF;PR;Palfinger;Delovodja;7,283333333333331;0,06666666666666643;7,216666666666665;0,0;0,0;0,0;0,0;-0,7166666666666686;1
-11.1.2019;8238;42,0;BF;P;Palfinger;Kljuèavnièar;0,0;0,0;0,0;0,0;0,0;0,0;0,0;-8,0;1
 11.1.2019;8241;91,0;LAK;P;Palfinger;Operater lakirnice II;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
 11.1.2019;8246;51,0;GG;P;Palfinger;Kljuèavnièar-varilec;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
 11.1.2019;8247;67,0;EPS;P;Palfinger;Kljuèavnièar-varilec II;16,0;8,0;0,0;8,0;0,0;0,0;8,0;0,0;1
@@ -1038,7 +1035,6 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 11.1.2019;24658;96,0;MGK;P;Palfinger;Montažer II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 11.1.2019;24661;92,0;MGK;P;Palfinger;Montažer II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 11.1.2019;24773;96,0;MGK;P;Palfinger;Montažer II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
-11.1.2019;24775;96,0;MGK;P;Palfinger;Montažer II;0,0;0,0;0,0;0,0;0,0;0,0;0,0;-8,0;1
 11.1.2019;24777;90,0;MGK;PR;Palfinger;Skladišènik;8,0;7,0;1,0;0,0;0,0;0,0;0,0;0,0;1
 11.1.2019;24778;85,0;GTC;P;Palfinger;Kljuèavnièar-varilec II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 11.1.2019;24779;44,0;BF;P;Palfinger;Kljuèavnièar PO;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
@@ -1074,7 +1070,6 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 11.1.2019;25743;85,0;GTC;P;Palfinger;Kljuèavnièar-varilec II;12,0;0,0;4,0;8,0;0,0;0,0;4,0;0,0;1
 11.1.2019;25744;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 11.1.2019;25745;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
-11.1.2019;25746;51,0;GG;P;Palfinger;Kljuèavnièar-varilec II;0,0;0,0;0,0;0,0;0,0;0,0;0,0;-8,0;1
 11.1.2019;25864;30,0;EPS;P;Palfinger;Kljuèavnièar TPM z omejitvami;8,0;0,0;0,0;0,0;0,0;8,0;0,0;0,0;1
 11.1.2019;25878;95,0;MGK;P;Palfinger;Montažer II;6,0;0,0;6,0;0,0;0,0;0,0;0,0;-2,0;1
 11.1.2019;25918;50,0;EPS;PR;Palfinger;Voznik vilièarja II;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
@@ -2367,7 +2362,7 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 15.1.2019;22600;12,0;LOG;PR;Palfinger;Voznik vilièarja;8,5;8,0;0,5;0,0;0,0;0,0;0,5;0,0;1
 15.1.2019;22655;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
 15.1.2019;22762;41,0;BF;P;Palfinger;Kljuèavnièar PO;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
-15.1.2019;22766;81,0;GTC;P;Palfinger;CNC operater II;16,0;0,0;0,0;8,0;0,0;8,0;8,0;0,0;1
+15.1.2019;22766;81,0;GTC;P;Palfinger;CNC operater II;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 15.1.2019;22777;55,0;GG;P;Palfinger;Varilec/Operater na robotu II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 15.1.2019;22778;97,0;MGK;P;Palfinger;Montažer II;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
 15.1.2019;22779;97,0;MGK;P;Palfinger;Montažer II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
@@ -2386,7 +2381,7 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 15.1.2019;22958;51,0;GG;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 15.1.2019;22989;85,0;GTC;P;Palfinger;Kljuèavnièar-varilec II;10,0;8,0;2,0;0,0;0,0;0,0;2,0;0,0;1
 15.1.2019;22990;41,0;BF;P;Palfinger;Kljuèavnièar PO;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
-15.1.2019;23073;81,0;GTC;P;Palfinger;Pomožni kljuèavnièar;16,0;0,0;0,0;8,0;0,0;8,0;8,0;0,0;1
+15.1.2019;23073;81,0;GTC;P;Palfinger;Pomožni kljuèavnièar;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 15.1.2019;23074;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 15.1.2019;23075;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 15.1.2019;23112;85,0;GTC;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
@@ -3034,7 +3029,6 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 8.1.2019;24909;53,0;GG;P;Palfinger;Kljuèavnièar-varilec II;10,0;8,0;0,0;2,0;0,0;0,0;2,0;0,0;1
 8.1.2019;24917;20,0;INST;PR;Palfinger;Tehnièni administrator;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 8.1.2019;24924;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;0,0;0,0;8,0;0,0;0,0;0,0;1
-8.1.2019;24970;84,0;GTC;P;Palfinger;Kljuèavnièar-varilec II;0,0;0,0;0,0;0,0;0,0;0,0;0,0;-8,0;1
 8.1.2019;24971;91,0;LAK;P;Palfinger;Pomožni kljuèavnièar;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
 8.1.2019;24972;91,0;LAK;P;Palfinger;Pomožni kljuèavnièar;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 8.1.2019;24973;91,0;LAK;P;Palfinger;Pomožni kljuèavnièar;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
@@ -3049,7 +3043,6 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 8.1.2019;25742;57,0;EPS;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
 8.1.2019;25743;85,0;GTC;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;8,0;0,0;0,0;0,0;0,0;0,0;1
 8.1.2019;25744;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
-8.1.2019;25745;79,0;GKC;P;Palfinger;Kljuèavnièar-varilec II;0,0;0,0;0,0;0,0;0,0;0,0;0,0;-8,0;1
 8.1.2019;25746;51,0;GG;P;Palfinger;Kljuèavnièar-varilec II;16,0;8,0;0,0;8,0;0,0;0,0;8,0;0,0;1
 8.1.2019;25864;30,0;EPS;P;Palfinger;Kljuèavnièar TPM z omejitvami;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 8.1.2019;25878;95,0;MGK;P;Palfinger;Montažer II;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
@@ -3169,7 +3162,6 @@ datum;MS;Tim;CC;Enote;Podjetje;Poklic;H_skupaj;H_1;H_2;H_3;H_bolniska;H_dopust;H
 9.1.2019;8282;61,0;KSR;P;Palfinger;CNC operater;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 9.1.2019;8283;84,0;GTC;P;Palfinger;Kljuèavnièar-varilec;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 9.1.2019;8284;85,0;GTC;P;Palfinger;Kljuèavnièar-varilec;8,0;0,0;0,0;0,0;8,0;0,0;0,0;0,0;1
-9.1.2019;8286;84,0;GTC;P;Palfinger;Kljuèavnièar-varilec;0,0;0,0;0,0;0,0;0,0;0,0;0,0;-8,0;1
 9.1.2019;8287;59,0;EPS;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1
 9.1.2019;8288;85,0;GTC;P;Palfinger;Kljuèavnièar-varilec II;8,0;8,0;0,0;0,0;0,0;0,0;0,0;0,0;1
 9.1.2019;8289;85,0;GTC;P;Palfinger;Kljuèavnièar-varilec II;8,0;0,0;0,0;8,0;0,0;0,0;0,0;0,0;1

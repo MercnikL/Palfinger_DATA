@@ -15,3 +15,6 @@
 16.1.2019 8:19:51; ErrStep= -1; 
 18.1.2019 8:14:58; ErrStep= -1; 
 24. 01. 2019 14:42:29; ErrStep= 1; Provider cannot be found. It may not be properly installed.
+31. 01. 2019 08:15:53; ErrStep= -1; 
+31. 01. 2019 08:33:38; ErrStep= -1; 
+31. 01. 2019 08:35:26; ErrStep= -1; 

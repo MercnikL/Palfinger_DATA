@@ -1,23 +1,22 @@
-sPath = SetPath()
-'Sets path to current directory
+Set winShell = CreateObject("WScript.Shell") 
 
-pPath = PythonPath()
+sPath = SetPath()  'Sets path to current directory
+
 'Sets the path for python.exe
+pPath = PythonPath()
 
-StartSAP
 'Start SAP
+StartSAP
 
-MultipleLogins
 'Check Multiple logins pop-up window
 'Preveri okno, ki se prikaže ob večkratni prijavi
+MultipleLogins
 
-ErrCatch 
-'SAP procedura ZMATERIAL
 'SAP procedure ZMATERIAL
+ErrCatch 
 
-TransformPython
 'Transforms Data gathered from SAP via Python
-'Transformira podatke pridobljene iz SAP z Pythonom
+TransformPython
 
 EndSAP
 'END SAP
@@ -29,18 +28,14 @@ Function PythonPath()
 	'Nastavljanje poti Pythona
 
 	path_student = "C:/Users/student5/Anaconda/Python.exe"
-	path_home = "D:/OneDrive/Dokumenti/Python"
+	path_slanad = "C:/Users/slanad/AppData/Local/Continuum/anaconda3/Python.exe"
 	path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
-	path_daniela = "C:/Users/bedernjakd/Documents"
 
-	If (fso.FileExists(path_home)) Then
-		PythonPath = path_home
+	If (fso.FileExists(path_slanad)) Then
+		PythonPath = path_slanad
 
 	ElseIf (fso.FileExists(path_work)) Then
 		PythonPath = path_work
-		
-	ElseIf (fso.FileExists(path_daniela)) Then
-		PythonPath = path_daniela
 
 	ElseIf (fso.FileExists(path_student)) Then
 		PythonPath = path_student
@@ -53,34 +48,32 @@ End Function
 
 Sub MultipleLogins
 
-'Runs cmd line
-Set winShell = CreateObject("WScript.Shell")
-WaitOnReturn = False
-windowStyle = 1
+	'Runs cmd line
+	'Set winShell = CreateObject("WScript.Shell")
+	'WaitOnReturn = False
+	'windowStyle = 1
 
-'Define the command to run the python file and exit when done
-command1 = pPath & " autoClose.py" 
-command2 = "exit"
+	'Define the command to run the python file and exit when done
+	command1 = pPath & " autoClose.py" 
+	command2 = "exit"
 
-'Run the commands
-Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+	'Run the commands
+	winShell.Run(command1 & " " & command2)
 
 End Sub
 
 
 Sub TransformPython
 
-'Runs cmd line
-Set winShell = CreateObject("WScript.Shell")
-WaitOnReturn = False
-windowStyle = 1
+	'Runs cmd line
 
-'Define the command to run the python file and exit when done
-command1 = pPath & " TransformZPRLAW.py" 
-command2 = "exit"
 
-'Run the commands
-Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+	'Define the command to run the python file and exit when done
+	command1 = pPath & " TransformZPRLAW.py" 
+	command2 = "exit"
+
+	'Run the commands
+	winShell.Run(command1 & " " & command2)
 
 End Sub
 
@@ -114,108 +107,17 @@ Sub ErrCatch() 'If Error occurs, save the log about it
 	Set f = Nothing 'Clearing memory
 	Set fs = Nothing 'Clearing memory
 
-end sub
-
-
-Function UnSafeCode(ErrStep)
-
-ErrStep = 1
-'Oppening SAPGUI
-
-	If Not IsObject(Ap) Then
-		Set SapGuiAuto = GetObject("SAPGUI")
-		Set Ap = SapGuiAuto.GetScriptingEngine
-	End If
-		If Not IsObject(Connection) Then
-			Set Connection = Ap.Children(0)
-		End If
-		If Not IsObject(session) Then
-		   Set session = Connection.Children(0)
-		End If
-		If IsObject(WScript) Then
-		   WScript.ConnectObject session, "on"
-		   WScript.ConnectObject Ap, "on"
-		End If
-
-
-ErrStep = 2
-
-'Data location
-'Lokacije datotek
-
-
-sPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName) & "\"
-'sFile1 = "data_1D.txt" <-- test file
-sFile2 = "data_120D.txt"
-
-'There were errors with pure Date function so the function is transformed
-'Variables contain the current date, yesterday's date, and date for one month back
-
-'Dim today, yesterday, monthBack 'Creating variables
-yesterday = DateAdd("d","-1",Date) 'Transforming current date to yesterday
-yesterday = Day(yesterday) & "." & Month(yesterday) & "." & Year(yesterday)' Formatting date
-	
-back127 = DateAdd("d","-127",Date) 'Transforming current date to 127 days back
-back127 = Day(back127) & "." & Month(back127) & "." & Year(back127)' Formatting date
-
-
-''izvozi podatke za 1 dan
-'   session.FindById("wnd[0]").Maximize
-'   session.FindById("wnd[0]/tbar[0]/okcd").Text = "zprlaw"
-'    session.FindById("wnd[0]").SendVKey 0 'ENTER
-'    session.FindById("wnd[0]/usr/ctxtP_WERKS-LOW").Text = "5101"
-'    session.FindById("wnd[0]/usr/ctxtP_BUDAT-LOW").Text = CStr(Date - 1)   'vcerajnji datum "10.12.2018"
-'    session.FindById("wnd[0]").SendVKey 8 'F8
-'    session.FindById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").PressToolbarContextButton "&MB_EXPORT" 'Export
-'    session.FindById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").SelectContextMenuItem "&PC"
-'    session.FindById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select 'Text s tabulatorji
-'    session.FindById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus
-'    session.FindById("wnd[1]/tbar[0]/btn[0]").Press 'Enter
-'	session.FindById("wnd[1]/usr/ctxtDY_PATH").Text = sPath 'lokacija
-'    session.FindById("wnd[1]/usr/ctxtDY_FILENAME").Text = sFile1 'ime datoteke
-''    session.FindById("wnd[2]/usr/ctxtDY_FILENAME").CaretPosition = 12 'novi file
-'    session.FindById("wnd[1]/usr/ctxtDY_FILENAME").CaretPosition = 16 'nadomesti
-'    session.FindById("wnd[1]").SendVKey 11
-'    session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
-'    session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
-
-ErrStep = 3
-'izvozi podatke za zadnjih 120 dni
-	Session.findById("wnd[0]").maximize
-    session.FindById("wnd[0]/tbar[0]/okcd").Text = "zprlaw"
-    session.FindById("wnd[0]").SendVKey 0 'ENTER
-    session.FindById("wnd[0]/usr/ctxtP_WERKS-LOW").Text = "5101"
-    session.FindById("wnd[0]/usr/ctxtP_BUDAT-LOW").Text = back127   'danes - 127 dni "10.12.2018"	
-	session.findById("wnd[0]/usr/ctxtP_BUDAT-HIGH").text = yesterday	'danes - 1 dan
-    session.FindById("wnd[0]").SendVKey 8 'F8
-    session.FindById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").PressToolbarContextButton "&MB_EXPORT" 'Export
-    session.FindById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").SelectContextMenuItem "&PC"
-    session.FindById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select 'Text s tabulatorji
-    session.FindById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus
-    session.FindById("wnd[1]/tbar[0]/btn[0]").Press 'Enter
-	session.FindById("wnd[1]/usr/ctxtDY_PATH").Text = sPath 'lokacija
-    session.FindById("wnd[1]/usr/ctxtDY_FILENAME").Text = sFile2 'ime datoteke
-'    session.FindById("wnd[2]/usr/ctxtDY_FILENAME").CaretPosition = 12 'novi file
-    session.FindById("wnd[1]/usr/ctxtDY_FILENAME").CaretPosition = 16 'nadomesti
-    session.FindById("wnd[1]").SendVKey 11
-    session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
-    session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
-
-ErrStep = -1
-	'If everything is OK
-	'Če vse dela
-
-
-End Function
+End Sub
 	
 Private Sub StartSAP() 'Start SAP Session and login
-'Start SAP
+	'Start SAP
 	
 	'Kreiramo cmd objekt
 	'Creating a cmd object
-	Set winShell = CreateObject("WScript.Shell") 
-	WaitOnReturn = False
-	windowStyle = 1
+	Set winShell = CreateObject("WScript.Shell")
+	'WaitOnReturn = False
+	'windowStyle = 1
+
 
     'Preberi ime in geslo iz SAP_Credentials.txt
 	'Read username and password from SAP_Credentials.txt
@@ -230,7 +132,8 @@ Private Sub StartSAP() 'Start SAP Session and login
 	
 	'Zaženi zaželjene ukaze v cmd 
     'Run the desired pair of shell commands in command prompt.
-    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+	 
+    winShell.Run("cmd /k " & command1 & " & " & command2)
 	
 	'Pocakaj 7 sekund da se SAP nalozi, ker v prejsnjem stavku WaitOnReturn ne dela vedno
 	'Wait 7 seconds for SAP to load, because WaitOnReturn does not work everytime
@@ -260,3 +163,76 @@ Private Sub EndSAP() 'Kills SAP Session
     Set winShell = Nothing 
 	
 End Sub
+
+
+Function UnSafeCode(ErrStep)
+
+ErrStep = 1
+'Oppening SAPGUI
+
+	If Not IsObject(Ap) Then
+		Set SapGuiAuto = GetObject("SAPGUI")
+		Set Ap = SapGuiAuto.GetScriptingEngine
+	End If
+		If Not IsObject(Connection) Then
+			Set Connection = Ap.Children(0)
+		End If
+		If Not IsObject(session) Then
+		   Set session = Connection.Children(0)
+		End If
+		If IsObject(WScript) Then
+		   WScript.ConnectObject session, "on"
+		   WScript.ConnectObject Ap, "on"
+		End If
+
+
+ErrStep = 2
+
+'Data location
+'Lokacije datotek
+
+
+	sPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName) & "\"
+	'sFile1 = "data_1D.txt" <-- test file
+	sFile2 = "data_120D.txt"
+
+	'There were errors with pure Date function so the function is transformed
+	'Variables contain the current date, yesterday's date, and date for one month back
+
+	'Dim today, yesterday, monthBack 'Creating variables
+	yesterday = DateAdd("d","-1",Date) 'Transforming current date to yesterday
+	yesterday = Day(yesterday) & "." & Month(yesterday) & "." & Year(yesterday)' Formatting date
+		
+	back127 = DateAdd("d","-127",Date) 'Transforming current date to 127 days back
+	back127 = Day(back127) & "." & Month(back127) & "." & Year(back127)' Formatting date
+
+
+
+ErrStep = 3
+'izvozi podatke za zadnjih 120 dni
+	Session.findById("wnd[0]").maximize
+    session.FindById("wnd[0]/tbar[0]/okcd").Text = "zprlaw"
+    session.FindById("wnd[0]").SendVKey 0 'ENTER
+    session.FindById("wnd[0]/usr/ctxtP_WERKS-LOW").Text = "5101"
+    session.FindById("wnd[0]/usr/ctxtP_BUDAT-LOW").Text = back127   'danes - 127 dni "10.12.2018"	
+	session.findById("wnd[0]/usr/ctxtP_BUDAT-HIGH").text = yesterday	'danes - 1 dan
+    session.FindById("wnd[0]").SendVKey 8 'F8
+    session.FindById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").PressToolbarContextButton "&MB_EXPORT" 'Export
+    session.FindById("wnd[0]/usr/cntlCONTAINER/shellcont/shell").SelectContextMenuItem "&PC"
+    session.FindById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").Select 'Text s tabulatorji
+    session.FindById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").SetFocus
+    session.FindById("wnd[1]/tbar[0]/btn[0]").Press 'Enter
+	session.FindById("wnd[1]/usr/ctxtDY_PATH").Text = sPath 'lokacija
+    session.FindById("wnd[1]/usr/ctxtDY_FILENAME").Text = sFile2 'ime datoteke
+'    session.FindById("wnd[2]/usr/ctxtDY_FILENAME").CaretPosition = 12 'novi file
+    session.FindById("wnd[1]/usr/ctxtDY_FILENAME").CaretPosition = 16 'nadomesti
+    session.FindById("wnd[1]").SendVKey 11
+    session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
+    session.FindById("wnd[0]").SendVKey 12 'F12 - * zakljuci transakcijo
+
+ErrStep = -1
+	'If everything is OK
+	'Če vse dela
+
+
+End Function

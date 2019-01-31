@@ -99,3 +99,62 @@
 29.01.2019 07:58:54; transform.py ; data_120D.txt 
 29. 01. 2019 08:00:44; ErrStep= -1; 
 29.01.2019 08:00:47; transform.py ; data_120D.txt 
+29. 01. 2019 11:52:01; ErrStep= -1; 
+29.01.2019 11:52:04; transform.py ; data_120D.txt 
+29. 01. 2019 13:40:52; ErrStep= 3; The control could not be found by id.
+29. 01. 2019 13:41:21; ErrStep= 3; The control could not be found by id.
+29. 01. 2019 13:42:10; ErrStep= 3; The control could not be found by id.
+29.01.2019 13:42:12; transform.py ; data_120D.txt 
+29. 01. 2019 13:44:06; ErrStep= -1; 
+29.01.2019 13:44:09; transform.py ; data_120D.txt 
+29. 01. 2019 13:45:38; ErrStep= -1; 
+29.01.2019 13:45:40; transform.py ; data_120D.txt 
+29. 01. 2019 13:47:12; ErrStep= -1; 
+30. 01. 2019 11:45:27; ErrStep= -1; 
+30.01.2019 11:45:32; transform.py ; data_120D.txt 
+30. 01. 2019 11:48:12; ErrStep= -1; 
+30.01.2019 11:48:15; transform.py ; data_120D.txt 
+30. 01. 2019 12:00:59; ErrStep= 3; 
+30.01.2019 12:01:01; transform.py ; data_120D.txt 
+30. 01. 2019 12:02:39; ErrStep= -1; 
+30.01.2019 12:02:42; transform.py ; data_120D.txt 
+30. 01. 2019 12:10:55; ErrStep= -1; 
+30.01.2019 12:10:58; transform.py ; data_120D.txt 
+30. 01. 2019 12:13:06; ErrStep= -1; 
+30.01.2019 12:13:09; transform.py ; data_120D.txt 
+30. 01. 2019 12:26:22; ErrStep= -1; 
+30.01.2019 12:26:25; transform.py ; data_120D.txt 
+30. 01. 2019 12:50:25; ErrStep= -1; 
+30.01.2019 12:50:28; transform.py ; data_120D.txt 
+30. 01. 2019 12:52:25; ErrStep= -1; 
+30.01.2019 12:52:28; transform.py ; data_120D.txt 
+30. 01. 2019 13:04:47; ErrStep= 1; 
+30.01.2019 13:04:49; transform.py ; data_120D.txt 
+30. 01. 2019 13:07:27; ErrStep= -1; 
+30.01.2019 13:07:30; transform.py ; data_120D.txt 
+30. 01. 2019 13:12:49; ErrStep= -1; 
+30.01.2019 13:12:52; transform.py ; data_120D.txt 
+30. 01. 2019 13:13:39; ErrStep= 1; 
+30.01.2019 13:13:41; transform.py ; data_120D.txt 
+30. 01. 2019 13:15:05; ErrStep= 1; 
+30.01.2019 13:15:07; transform.py ; data_120D.txt 
+30. 01. 2019 13:17:01; ErrStep= -1; 
+30.01.2019 13:17:03; transform.py ; data_120D.txt 
+30. 01. 2019 13:34:25; ErrStep= -1; 
+30.01.2019 13:34:28; transform.py ; data_120D.txt 
+30. 01. 2019 13:38:10; ErrStep= -1; 
+30.01.2019 13:38:13; transform.py ; data_120D.txt 
+30. 01. 2019 13:43:14; ErrStep= 1; 
+30.01.2019 13:43:16; transform.py ; data_120D.txt 
+30. 01. 2019 13:43:24; ErrStep= 1; 
+30.01.2019 13:43:26; transform.py ; data_120D.txt 
+30. 01. 2019 13:44:31; ErrStep= 1; 
+30.01.2019 13:44:33; transform.py ; data_120D.txt 
+30. 01. 2019 13:45:56; ErrStep= -1; 
+30.01.2019 13:45:58; transform.py ; data_120D.txt 
+30. 01. 2019 13:48:32; ErrStep= 3; 
+30.01.2019 13:48:34; transform.py ; data_120D.txt 
+31. 01. 2019 08:17:14; ErrStep= -1; 
+31.01.2019 08:17:19; transform.py ; data_120D.txt 
+31. 01. 2019 08:37:06; ErrStep= -1; 
+31.01.2019 08:37:08; transform.py ; data_120D.txt 

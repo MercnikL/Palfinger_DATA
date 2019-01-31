@@ -1,19 +1,21 @@
-sPath = SetPath()
-'Sets path to current directory
 
-pPath = PythonPath()
+sPath = SetPath() 'Sets path to current directory
+
 'Sets the path for python.exe
+pPath = PythonPath()
 
-StartSAP	'Start SAP
+'Start SAP
+StartSAP	
 
-MultipleLogins
 'Check Multiple logins pop-up window
 'Preveri okno, ki se prikaže ob veèkratni prijavi
+MultipleLogins
 
-ErrCatch	'Izvede ZPRMA1
+'Izvede ZPRMA1
+ErrCatch	
 
-EndSAP		'END SAP 
-
+'END SAP
+EndSAP		 
 
 
 Function SetPath()
@@ -31,18 +33,14 @@ Function PythonPath()
 	'Nastavljanje poti Pythona
 
 	path_student = "C:/Users/student5/Anaconda/Python.exe"
-	path_home = "D:/OneDrive/Dokumenti/Python"
+	path_slanad = "C:/Users/slanad/AppData/Local/Continuum/anaconda3/Python.exe"
 	path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
-	path_daniela = "C:/Users/bedernjakd/Documents"
 
-	If (fso.FileExists(path_home)) Then
-		PythonPath = path_home
+	If (fso.FileExists(path_slanad)) Then
+		PythonPath = path_slanad
 
 	ElseIf (fso.FileExists(path_work)) Then
 		PythonPath = path_work
-		
-	ElseIf (fso.FileExists(path_daniela)) Then
-		PythonPath = path_daniela
 
 	ElseIf (fso.FileExists(path_student)) Then
 		PythonPath = path_student
@@ -55,17 +53,21 @@ End Function
 
 Sub MultipleLogins
 
-'Runs cmd line
-Set winShell = CreateObject("WScript.Shell")
-WaitOnReturn = False
-windowStyle = 1
+	'Runs cmd line
+	Set winShell = CreateObject("WScript.Shell")
+	WaitOnReturn = True
+	windowStyle = 1
 
-'Define the command to run the python file and exit when done
-command1 = pPath & " autoClose.py" 
-command2 = "exit"
+	'Define the command to run the python file and exit when done
+	command1 = pPath & " autoClose.py" 
+	command2 = "exit"
 
-'Run the commands
-Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+	'Run the commands
+	Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+	
+	dteWait = DateAdd("s", 3, Now())
+    Do Until (Now() > dteWait)
+    Loop
 
 End Sub
 
@@ -91,7 +93,62 @@ Sub ErrCatch() 'If Error occurs, save the log about it
 	Set f = Nothing 'Clearing memory
 	Set fs = Nothing 'Clearing memory
 
-end sub
+End Sub
+	
+Private Sub StartSAP() 'Start SAP Session and login
+'Start SAP
+	
+	'Kreiramo cmd objekt
+	'Creating a cmd object
+	
+	Set winShell = CreateObject("WScript.Shell") 
+	WaitOnReturn = True
+	windowStyle = 1
+
+
+    'Preberi ime in geslo iz SAP_Credentials.txt
+	'Read username and password from SAP_Credentials.txt
+    Dim f, sUser, sPass
+    Set f = CreateObject("Scripting.FileSystemObject").OpenTextFile("..\SAP_Credentials.txt", 1) '1 je za read / 1 means read
+    sUser = f.ReadLine
+    sPass = f.ReadLine
+    Set f = Nothing
+
+    command1 = "start sapshcut -sysname=PD1 -client=400 -user=" & sUser & " -pw=" & sPass &" " 'Defining command to log-in into SAP
+    command2 = "exit " 'Defining command to exit cmd
+	
+	'Zaženi zaželjene ukaze v cmd 
+    'Run the desired pair of shell commands in command prompt.
+    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+	
+	'Pocakaj 7 sekund da se SAP nalozi, ker v prejsnjem stavku WaitOnReturn ne dela vedno
+	'Wait 7 seconds for SAP to load, because WaitOnReturn does not work everytime
+    dteWait = DateAdd("s", 7, Now())
+    Do Until (Now() > dteWait)
+    Loop
+	
+End Sub
+
+Private Sub EndSAP() 'Kills SAP Session
+
+	'Kreiramo cmd objekt
+	 'Creating a cmd object
+	Set winShell = CreateObject("WScript.Shell")
+	WaitOnReturn = False
+	windowStyle = 1
+	
+    command1 = "taskkill /F /IM saplogon.exe " 'Defining command to kill the program
+    command2 = "exit " 'Defining command to exit cmd
+	
+	'Zaženi ukaze v cmd
+	'Running the commands in cmd
+    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+	
+	'Sprosti kazalec
+	'Release pointer to the command prompt.
+    Set winShell = Nothing 
+	
+End Sub
 
 
 Function UnSafeCode(ErrStep)
@@ -159,56 +216,3 @@ ErrStep = -1
 	'Èe vse dela
 
 End Function
-	
-Private Sub StartSAP() 'Start SAP Session and login
-'Start SAP
-	
-	'Kreiramo cmd objekt
-	'Creating a cmd object
-	Set winShell = CreateObject("WScript.Shell") 
-	WaitOnReturn = False
-	windowStyle = 1
-
-    'Preberi ime in geslo iz SAP_Credentials.txt
-	'Read username and password from SAP_Credentials.txt
-    Dim f, sUser, sPass
-    Set f = CreateObject("Scripting.FileSystemObject").OpenTextFile("..\SAP_Credentials.txt", 1) '1 je za read / 1 means read
-    sUser = f.ReadLine
-    sPass = f.ReadLine
-    Set f = Nothing
-
-    command1 = "start sapshcut -sysname=PD1 -client=400 -user=" & sUser & " -pw=" & sPass &" " 'Defining command to log-in into SAP
-    command2 = "exit " 'Defining command to exit cmd
-	
-	'Zaženi zaželjene ukaze v cmd 
-    'Run the desired pair of shell commands in command prompt.
-    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
-	
-	'Pocakaj 7 sekund da se SAP nalozi, ker v prejsnjem stavku WaitOnReturn ne dela vedno
-	'Wait 7 seconds for SAP to load, because WaitOnReturn does not work everytime
-    dteWait = DateAdd("s", 7, Now())
-    Do Until (Now() > dteWait)
-    Loop
-	
-End Sub
-
-Private Sub EndSAP() 'Kills SAP Session
-
-	'Kreiramo cmd objekt
-	 'Creating a cmd object
-	Set winShell = CreateObject("WScript.Shell")
-	WaitOnReturn = False
-	windowStyle = 1
-	
-    command1 = "taskkill /F /IM saplogon.exe " 'Defining command to kill the program
-    command2 = "exit " 'Defining command to exit cmd
-	
-	'Zaženi ukaze v cmd
-	'Running the commands in cmd
-    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
-	
-	'Sprosti kazalec
-	'Release pointer to the command prompt.
-    Set winShell = Nothing 
-	
-End Sub

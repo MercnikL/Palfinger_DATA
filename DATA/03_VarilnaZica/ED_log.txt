@@ -70,3 +70,16 @@
 29. 01. 2019 08:29:31; ErrStep= -1; 
 29. 01. 2019 08:31:23; ErrStep= -1; 
 29. 01. 2019 08:32:03; ErrStep= -1; 
+29. 01. 2019 11:52:42; ErrStep= -1; 
+29. 01. 2019 14:03:18; ErrStep= -1; 
+30. 01. 2019 09:48:30; ErrStep= -1; 
+30. 01. 2019 09:50:37; ErrStep= -1; 
+30. 01. 2019 09:51:01; ErrStep= 8; The method got an invalid argument.
+30. 01. 2019 09:52:37; ErrStep= -1; 
+30. 01. 2019 09:53:05; ErrStep= -1; The method got an invalid argument.
+30. 01. 2019 13:49:38; ErrStep= -1; 
+30. 01. 2019 13:50:00; ErrStep= -1; The method got an invalid argument.
+31. 01. 2019 08:18:12; ErrStep= -1; 
+31. 01. 2019 08:18:36; ErrStep= -1; The method got an invalid argument.
+31. 01. 2019 08:37:43; ErrStep= -1; 
+31. 01. 2019 08:38:06; ErrStep= -1; The method got an invalid argument.
