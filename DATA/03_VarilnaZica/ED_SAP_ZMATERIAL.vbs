@@ -75,9 +75,6 @@ Sub ErrCatch2() 'If Error occurs, save the log about it
 End Sub
 
 
-
-
-
 Function f_ReadMD04TableCell(Session, Vrstica, Stolpec)
 'Session je SAP session
 'Vrstice se zacnejo pri 0

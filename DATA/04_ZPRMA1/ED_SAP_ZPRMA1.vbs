@@ -1,4 +1,3 @@
-
 sPath = SetPath() 'Sets path to current directory
 
 'Sets the path for python.exe

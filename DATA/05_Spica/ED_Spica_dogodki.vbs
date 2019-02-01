@@ -11,26 +11,22 @@ Function PythonPath()
 
 Set fso = CreateObject("Scripting.FileSystemObject")
 
-path_student = "C:/Users/student5/Anaconda/Python.exe"
-path_home = "D:/OneDrive/Dokumenti/Python"
-path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
-path_daniela = "C:/Users/bedernjakd/Documents"
+	path_student = "C:/Users/student5/Anaconda/Python.exe"
+	path_slanad = "C:/Users/slanad/AppData/Local/Continuum/anaconda3/Python.exe"
+	path_work = "C:/Users/slanad/OneDrive/Dokumenti/Python"
 
-If (fso.FileExists(path_home)) Then
-	PythonPath = path_home
-	WScript.Echo "Found for home"
-ElseIf (fso.FileExists(path_work)) Then
-	PythonPath = path_work
-	WScript.Echo "Found for work"
-ElseIf (fso.FileExists(path_daniela)) Then
-	PythonPath = path_daniela
-	WScript.Echo "Found for daniela"
-ElseIf (fso.FileExists(path_student)) Then
-	PythonPath = path_student
-	WScript.Echo "Found for student"
-Else
-    WScript.Echo "Could not find path"
-End If
+	If (fso.FileExists(path_slanad)) Then
+		PythonPath = path_slanad
+
+	ElseIf (fso.FileExists(path_work)) Then
+		PythonPath = path_work
+
+	ElseIf (fso.FileExists(path_student)) Then
+		PythonPath = path_student
+
+	Else
+		WScript.Echo "Could not find path"
+	End If
 
 End Function
 
@@ -41,7 +37,7 @@ WaitOnReturn = False
 windowStyle = 1
 
 'Define the command to run the python file and exit when done
-command1 = pPath & " TransformSpica.py" 
+command1 = pPath & " Transform.py" 
 command2 = "exit"
 
 'Run the commands
