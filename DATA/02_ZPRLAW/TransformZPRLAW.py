@@ -118,8 +118,3 @@ sSedaj = datetime.now().strftime('%d.%m.%Y %H:%M:%S')
 
 with open(sLogFile, "a") as myfile:
     myfile.write(sSedaj + "; transform.py ; " + sFile1 + " \n")
-
-
-    
-    
-
